@@ -75,6 +75,10 @@
     <IncludePath>C:\Program Files %28x86%29\Intel\openvino_2023.1.0\runtime\include;C:\3rdpartylib\opencv-4.5.5\build\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Program Files %28x86%29\Intel\openvino_2023.1.0\runtime\lib\intel64\Debug;C:\3rdpartylib\opencv-4.5.5\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>C:\Program Files %28x86%29\Intel\openvino_2023.1.0\runtime\include;C:\3rdpartylib\opencv-4.5.5\build\include;C:\Program Files (x86)\Intel\openvino_2023.1.0\runtime\include\ie;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\3rdpartylib\opencv-4.5.5\build\x64\vc15\lib;C:\Program Files %28x86%29\Intel\openvino_2023.1.0\runtime\lib\intel64\Release;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -109,6 +113,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,10 +135,17 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_world455.lib;openvino.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="process.cpp" />
+    <ClCompile Include="rtdert_predictor.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="process.h" />
+    <ClInclude Include="rtdert_predictor.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

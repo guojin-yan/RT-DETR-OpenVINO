@@ -2,11 +2,32 @@
 //
 
 #include <iostream>
+#include <vector>
 #include <opencv2/opencv.hpp>
 #include <openvino/openvino.hpp>
+
+#include "process.h"
+#include "rtdert_predictor.h"
+
+
+void RT_DETR() {
+    INFO("This is an RT-DETR model deployment case using C++!");
+    //std::string model_path = "E:\\Model\\rtdetr_r50vd_6x_coco.onnx";
+    std::string model_path = "E:\\Model\\RT-DETR\\rtdetr_r50vd_6x_coco.xml";
+    std::string image_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\000000570688.jpg";
+    std::string label_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\COCO_lable.txt";
+    RTDETRPredictor predictor(model_path, label_path, "CPU", false);
+    //RTDETRPredictor predictor(model_path, label_path, "CPU", true);
+    cv::Mat image = cv::imread(image_path);
+    cv::Mat result_mat = predictor.predict(image);
+    cv::imshow("C++ deploy RT-DETR result", result_mat);
+    cv::waitKey(0);
+}
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    RT_DETR();
+    getchar();
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
