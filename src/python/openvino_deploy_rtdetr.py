@@ -62,7 +62,7 @@ def rtdert_infer(model_path, image_path, device_name, lable_path, postprocess=Tr
     else:
         re=rtdetr_process.postprocess(results[compiled_model.output(1)][0],results[compiled_model.output(0)][0])
         new_image=rtdetr_process.draw_box(image,re)
-        cv.imshow("result",new_image)
+        cv.imshow("Python deploy RT-DETR result",new_image)
         cv.waitKey(0)
 
 
