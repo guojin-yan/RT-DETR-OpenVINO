@@ -10,23 +10,30 @@
 #include "rtdert_predictor.h"
 
 
-void RT_DETR() {
+void RT_DETR(bool post_flag) {
     INFO("This is an RT-DETR model deployment case using C++!");
-    //std::string model_path = "E:\\Model\\rtdetr_r50vd_6x_coco.onnx";
-    std::string model_path = "E:\\Model\\RT-DETR\\rtdetr_r50vd_6x_coco.xml";
+
     std::string image_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\000000570688.jpg";
     std::string label_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\COCO_lable.txt";
-    RTDETRPredictor predictor(model_path, label_path, "CPU", false);
-    //RTDETRPredictor predictor(model_path, label_path, "CPU", true);
     cv::Mat image = cv::imread(image_path);
-    cv::Mat result_mat = predictor.predict(image);
+    cv::Mat result_mat;
+    if (post_flag) {
+        std::string model_path = "E:\\Model\\rtdetr_r50vd_6x_coco.onnx";
+        RTDETRPredictor predictor(model_path, label_path, "CPU", true);
+        result_mat = predictor.predict(image);
+    }
+    else {
+        std::string model_path = "E:\\Model\\RT-DETR\\rtdetr_r50vd_6x_coco.xml";
+        RTDETRPredictor predictor(model_path, label_path, "CPU", false);
+        result_mat = predictor.predict(image);
+    }
     cv::imshow("C++ deploy RT-DETR result", result_mat);
     cv::waitKey(0);
 }
 
 int main()
 {
-    RT_DETR();
+    RT_DETR(true);
     getchar();
 }
 
