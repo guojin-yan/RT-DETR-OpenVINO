@@ -20,12 +20,12 @@ def main(postprocess = True):
         model_path = "E:\\Model\\rtdetr_r50vd_6x_coco.onnx"
         image_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\000000570688.jpg"
         lable_path = "E:\\GitSpace\\OpenVINO-CSharp-API\dataset\\lable\\COCO_lable.txt"
-        rtdert_infer(model_path, image_path, "GPU.0", lable_path,True)
+        rtdert_infer(model_path, image_path, "CPU", lable_path,True)
     else:
         model_path = "E:\\Model\\RT-DETR\\rtdetr_r50vd_6x_coco.xml"
         image_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\000000570688.jpg"
         lable_path = "E:\\GitSpace\\OpenVINO-CSharp-API\dataset\\lable\\COCO_lable.txt"
-        rtdert_infer(model_path, image_path, "GPU 0", lable_path,False)
+        rtdert_infer(model_path, image_path, "CPU", lable_path,False)
 
 
 # The `if __name__ == '__main__':` statement is used to check whether the current script is being run
