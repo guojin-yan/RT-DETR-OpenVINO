@@ -82,8 +82,9 @@ class RtdetrProcess(object):
         resize_h, resize_w = self.target_size
         im_scale_y = resize_h / float(origin_shape[0])
         im_scale_x = resize_w / float(origin_shape[1])
+        out_im = cv.cvtColor(im,cv.COLOR_BGR2RGB)
         out_im = cv.resize(
-            im.astype('float32'),
+            out_im.astype('float32'),
             None,
             None,
             fx=im_scale_x,
@@ -233,7 +234,7 @@ class RtdetrProcess(object):
         im = Image.fromarray(im)
         draw = ImageDraw.Draw(im)
         clsid2color = {}
-        color_list = self.get_color_map_list(len(self.labels))
+        color_list = self.get_color_map_list(80)
         for re in results:
             clsid =  re["clsid"]
             label = re["label"]
