@@ -5,22 +5,42 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rt-detr_openvino_cpp", "src\cpp\rt-detr_openvino_cpp.vcxproj", "{4A975A6C-1C53-4174-9F1C-5844E6E80846}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rt-detr_openvino_csharp", "src\csharp\rt-detr_openvino_csharp.csproj", "{410FE6D6-C7C8-42FC-9285-39437C465B52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Debug|Any CPU.Build.0 = Debug|x64
 		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Debug|x64.ActiveCfg = Debug|x64
 		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Debug|x64.Build.0 = Debug|x64
 		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Debug|x86.ActiveCfg = Debug|Win32
 		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Debug|x86.Build.0 = Debug|Win32
+		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Release|Any CPU.ActiveCfg = Release|x64
+		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Release|Any CPU.Build.0 = Release|x64
 		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Release|x64.ActiveCfg = Release|x64
 		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Release|x64.Build.0 = Release|x64
 		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Release|x86.ActiveCfg = Release|Win32
 		{4A975A6C-1C53-4174-9F1C-5844E6E80846}.Release|x86.Build.0 = Release|Win32
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Debug|x64.Build.0 = Debug|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Debug|x86.Build.0 = Debug|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Release|x64.ActiveCfg = Release|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Release|x64.Build.0 = Release|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Release|x86.ActiveCfg = Release|Any CPU
+		{410FE6D6-C7C8-42FC-9285-39437C465B52}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
