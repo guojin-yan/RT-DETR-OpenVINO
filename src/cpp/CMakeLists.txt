@@ -26,12 +26,10 @@ set(OPENVINO_LIB ${OPENVINO_ROOT_PATH}/lib/intel64/Release/openvino.lib)
 include_directories(${OPENVINO_INCLUDE_DIRS})
 
 # 将生成的可执行文件保存到指定路径
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  "./bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  "./")
 
 # 编译成可执行文件
 add_executable(rt-detr_openvino_cpp main.cpp rtdert_predictor.cpp process.cpp)
 
 target_include_directories(rt-detr_openvino_cpp PRIVATE ${OpenCV_INCLUDE_DIRS})
 target_link_libraries(rt-detr_openvino_cpp PRIVATE ${OPENVINO_LIB} ${OpenCV_LIBS} )
-
-

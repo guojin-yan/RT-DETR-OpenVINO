@@ -33,7 +33,7 @@ namespace rt_detr_openvino_csharp
                 RTDETRPredictor predictor = new RTDETRPredictor(model_path, label_path, "CPU", false);
                 result_mat = predictor.predict(image);
             }
-            Cv2.ImShow("C++ deploy RT-DETR result", result_mat);
+            Cv2.ImShow("C# deploy RT-DETR result", result_mat);
            Cv2.WaitKey(0);
         }
         static void Main(string[] args)

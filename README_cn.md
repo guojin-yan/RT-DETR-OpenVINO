@@ -1,20 +1,22 @@
 ![OpenVINO™ C# API](https://socialify.git.ci/guojin-yan/OpenVINO-CSharp-API/image?description=1&descriptionEditable=💞%20OpenVINO%20wrapper%20for%20.NET💞%20&forks=1&issues=1&logo=https%3A%2F%2Fs2.loli.net%2F2023%2F01%2F26%2FylE1K5JPogMqGSW.png&name=1&owner=1&pattern=Circuit%20Board&pulls=1&stargazers=1&theme=Light)
 
-[简体中文](README_cn.md) |English
+简体中文 |[English](README.md) 
 
 # RT-DETR-OpenVINO
 
 This project mainly demonstrates the deployment of RT-DETR model cases based on OpenVINO C++, Python, and C # API.
 
-# 🛠 Project Environment
+本项目主要基于Windows环境展示了基于OpenVINO C++、Python和C#API的RT-DETR模型案例的部署。
 
-| Python Environment                                           | C++ Environment                     | C# Environment                                               |
+# 🛠 项目环境
+
+| Python 环境                                                  | C++环境                             | C# 环境                                                      |
 | ------------------------------------------------------------ | :---------------------------------- | :----------------------------------------------------------- |
 | paddlepaddle=2.5.1<br/>onnx=1.13.0 <br/>paddle2onnx=0.5 <br/>paddledet <br/>opencv-python=4.8.1.78 <br/>openvino=2023.1.0 <br/>pillow=10.0.1 | opencv=4.5.5 <br/>openvino=2023.1.0 | OpenCvSharp4.Windows=4.8.0.20230708 <br/>OpenVINO.CSharp.win=3.1.1 |
 
-# 🎯 Model Download and Cconversion
+# 🎯 模型下载与转换
 
-## ♻ Environmental Installation
+## ♻ 环境安装
 
 ```shell
 # Creating a virtual environment using Conda.
@@ -42,7 +44,7 @@ pip install paddle2onnx==1.0.5
 pip install openvino==2023.1.0
 ```
 
-## ➿ Model Export
+## ➿ 模型导出
 
 ```shell
 cd PaddleDetection
@@ -51,30 +53,31 @@ python tools/export_model.py -c configs/rtdetr/rtdetr_r50vd_6x_coco.yml -o weigh
 
 <div align=center><span><img src="https://s2.loli.net/2023/10/18/bwBfI3JR7goH5Da.png" height=300/></span></div>
 
-The above figure shows our exported RT-DETR model, which actually includes post-processing. Therefore, the input of the model has three nodes. If you find it inconvenient to use, you can also export a model without post-processing. The implementation method is as follows:
-Modify the configuration file of the RT-DETR model, with the path to the configuration file:``.\PaddleDetection\configs\rtdetr\_base_\rtdetr_r50vd.yml``,  add 'exclude' under the DETR project in the configuration file_ Post_ Process: ``exclude_post_process: True``.
+上图为我们导出的RT-DETR模型，该模型实际是包含后处理的，因此模型的输入有三个节点，如果大家感觉使用较为麻烦，也可以导出不加后处理的模型，实现方式如下：
+
+修改RT-DETR模型的配置文件，配置文件路径为：``.\PaddleDetection\configs\rtdetr\_base_\rtdetr_r50vd.yml``，在配置文件DETR项目下增加``exclude_post_process: True``语句。
 
 <div align=center><span><img src="https://s2.loli.net/2023/10/18/tA2JFsqaR3L6Vnm.png" height=300/></span></div>
 
-Then rerun the model export command to obtain the model without post-processing, as shown in the following figure:
+然后重新运行模型导出指令，便可以获取不包含后处理的模型，如下图所示：
 
 <div align=center><span><img src="https://s2.loli.net/2023/10/18/OkWv5EcipdwrI7D.png" height=300/></span></div>
 
-## 🔮 Convert ONNX Format
+## 🔮 转换ONNX格式
 
 ```shell
 paddle2onnx --model_dir=./output_inference/rtdetr_r50vd_6x_coco/ --model_filename model.pdmodel --params_filename model.pdiparams --opset_version 16 --save_file rtdetr_r50vd_6x_coco.onnx
 ```
 
-## 🎨 Convert IR Format
+## 🎨 转换IR格式
 
-At present, the model exported by Paddle we are using is a dynamic shape, and OpenVINO supports dynamic model input. However, to prevent convenience in subsequent processing, we fix the shape of the model when exporting the IR model. This can be achieved by using the following instructions:
+目前我们所使用的Paddle所导出来的模型为动态形状，并且OpenVINO支持动态模型输入，但是为了防止后续处理时方便，此处我们在导出IR模型时，对模型的形状进行固定，通过以下指令便可以实现：
 
 ```shell
 ovc rtdetr_r50vd_6x_coco.onnx --input “image[1,3,640,640], im_shape[1,2], scale_factor[1,2]”
 ```
 
-If it is a model without post-processing exported from the previous text, the conversion instruction is:
+如果是前文中导出来的不带后处理的模型，转换指令为：
 
 ```shell
 ovc rtdetr_r50vd_6x_coco.onnx --input image[1,3,640,640]
@@ -90,10 +93,10 @@ cd RT-DETR-OpenVINO/scr/python
 python main.py [model path] [image path] [label path] [post flag(1/0)]
 ```
 
-- \[model path]：Represents the address of the prediction model, which can be exported according to the steps above or downloaded from the model published in this warehouse.
-- [image path]：Indicates the address of the image to be predicted, and the file location is in the ``RT-DETR-OpenVINO\image`` path.
-- [label path]：Represent the prediction result category file,  and the file location is in the ``RT-DETR-OpenVINO\image`` path.
-- [post flag(1/0)]：Indicates whether the model includes post-processing, post_ flag=0 indicates no post-processing, post_ flag=1 indicates the inclusion of post-processing
+- \[model path]：表示预测模型地址，可以根据上文步骤进行导出，或者下载本仓库中发布的模型。
+- [image path]：表示待预测图片地址，文件位置在``RT-DETR-OpenVINO\image``路径下。
+- [label path]：表示预测结果类别文件，文件位置在``RT-DETR-OpenVINO\image``路径下。
+- [post flag(1/0)]：表示是否包含后处理的模型，post_flag=0表示不包含后处理，post_flag=1表示包含后处理.
 
 
 
@@ -108,9 +111,7 @@ git clone https://github.com/guojin-yan/RT-DETR-OpenVINO.git
 cd RT-DETR-OpenVINO/scr/cpp
 ```
 
-C++ 案例中使用了Cmake编译，若要成功编译该项目，需要根据自己电脑安装对应的依赖库，该项目需要安装OpenVINO以及OpenCV；安装之后，修改`文件中OpenVINO以及OpenCV的编译路径地址即可。
-
-In the C++case, Cmake compilation was used. To successfully compile this project, it is necessary to install the corresponding dependency libraries based on one's own computer. This project requires the installation of OpenVINO and OpenCV; After installation, modify the compilation path addresses of OpenVINO and OpenCV in the ``RT-DETR-OpenVINO\src\cpp\CMakeLists.txt`` file.
+C++ 案例中使用了Cmake编译，若要成功编译该项目，需要根据自己电脑安装对应的依赖库，该项目需要安装OpenVINO以及OpenCV；安装之后，修改``RT-DETR-OpenVINO\src\cpp\CMakeLists.txt``文件中OpenVINO以及OpenCV的编译路径地址即可。
 
 ```
 mkdir build && cd build
@@ -137,6 +138,6 @@ dotnet run [model path] [image path] [label path] [post flag(1/0)]
 
 # 📱 Contact 
 
-If you are planning to deploy the RT-DETR model using OpenVINO, please refer to this case. If you have any questions during use, you can contact me through the following methods.
+如果您准备使用OpenVINO部署RT-DETR模型，欢迎参考本案例。在使用中有任何问题，可以通过以下方式与我联系。
 
 <div align=center><span><img src="https://s2.loli.net/2023/10/18/d6QUWL7HG523BuR.png" height=300/></span></div>
