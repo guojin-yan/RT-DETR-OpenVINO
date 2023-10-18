@@ -14,22 +14,22 @@ namespace rt_detr_openvino_csharp
 {
     internal class Program
     {
-        static void RT_DETR(bool post_flag)
+        static void RT_DETR(string model_path, string image_path, string label_path, bool post_flag)
         {
             INFO("Hello, World!");
-            string image_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\000000570688.jpg";
-            string label_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\COCO_lable.txt";
+            //string image_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\000000570688.jpg";
+            //string label_path = "E:\\GitSpace\\RT-DETR-OpenVINO\\image\\COCO_lable.txt";
             Mat image = Cv2.ImRead(image_path);
             Mat result_mat = new Mat();
             if (post_flag)
             {
-                string model_path = "E:\\Model\\rtdetr_r50vd_6x_coco.onnx";
+                //  string model_path  = "E:\\Model\\rtdetr_r50vd_6x_coco.onnx";
                 RTDETRPredictor predictor = new RTDETRPredictor(model_path, label_path, "CPU", true);
                 result_mat = predictor.predict(image);
             }
             else
             {
-                string model_path = "E:\\Model\\RT-DETR\\rtdetr_r50vd_6x_coco.xml";
+                // string model_path = "E:\\Model\\RT-DETR\\rtdetr_r50vd_6x_coco.xml";
                 RTDETRPredictor predictor = new RTDETRPredictor(model_path, label_path, "CPU", false);
                 result_mat = predictor.predict(image);
             }
@@ -38,7 +38,12 @@ namespace rt_detr_openvino_csharp
         }
         static void Main(string[] args)
         {
-            RT_DETR(false);
+            if (args.Length < 4) {
+                INFO("Please enter the correct parameters.");
+                INFO("For example:");
+                INFO("  dotnet run [model path] [image path] [lable path] [post flag(1/0)].");
+            }
+            RT_DETR(args[0], args[1], args[2], Convert.ToBoolean(Convert.ToInt32(args[3])));
         }
     }
 }

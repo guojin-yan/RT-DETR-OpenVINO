@@ -5,6 +5,10 @@
 
 # uSER
 .vscode/
+build/
+*.bin
+*.onnx
+*.xml
 
 # User-specific files
 *.rsuser
