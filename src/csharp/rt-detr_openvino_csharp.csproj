@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="OpenCvSharp4.Windows" Version="4.8.0.20230708" />
-    <PackageReference Include="OpenVINO.CSharp.win" Version="3.1.1" />
+    <PackageReference Include="OpenVINO.CSharp.Windows" Version="2023.1.0.2" />
   </ItemGroup>
 
 </Project>

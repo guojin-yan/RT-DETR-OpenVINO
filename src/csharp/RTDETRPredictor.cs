@@ -85,6 +85,7 @@ namespace rt_detr_openvino_csharp
             else
             {
                 Tensor image_tensor = infer_request.get_input_tensor();
+                image_tensor.set_shape(new Shape(new List<long> { 1, 3, 640, 640 }));
                 fill_tensor_data_image(image_tensor, blob_image);
             }
             infer_request.infer();
@@ -123,7 +124,7 @@ namespace rt_detr_openvino_csharp
             {
                 INFO("     name: " + input.get_any_name());
                 INFO("     type: " + input.get_element_type().c_type_string());
-                INFO("     shape: " + input.get_shape().to_string());
+                INFO("     shape: " + input.get_partial_shape().to_string());
             }
             INFO("  Output:");
             List<Output> outputs = model.outputs();
@@ -131,7 +132,7 @@ namespace rt_detr_openvino_csharp
             {
                 INFO("     name: " + output.get_any_name());
                 INFO("     type: " + output.get_element_type().c_type_string());
-                INFO("     shape: " + output.get_shape().to_string());
+                INFO("     shape: " + output.get_partial_shape().to_string());
             }
         }
 
