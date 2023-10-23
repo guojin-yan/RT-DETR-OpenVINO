@@ -71,6 +71,7 @@ cv::Mat RTDETRPredictor::predict(cv::Mat image){
         fill_tensor_data_float(scale_tensor, rtdetr_process.get_scale_factor().data(), 2);
     } else {
         ov::Tensor image_tensor = infer_request.get_input_tensor();
+        image_tensor.set_shape({ 1,3,640,640 });
         fill_tensor_data_image(image_tensor, blob_image);
     }
     infer_request.infer();
