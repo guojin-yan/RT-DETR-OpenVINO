@@ -20,9 +20,10 @@ using System.Reflection.Metadata.Ecma335;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using static rt_detr_openvino_csharp.Msg;
+using static OpenVinoSharp.Ov;
+using static rt_detr_time_text.Msg;
 
-namespace rt_detr_openvino_csharp
+namespace rt_detr_time_text
 {
     public static class Msg {
         public static void INFO(string msg)
@@ -191,7 +192,7 @@ namespace rt_detr_openvino_csharp
         public Mat draw_box(Mat image, ResultData results)
         {
             Mat re_image = image.Clone();
-            INFO("Infer result:");
+            //INFO("Infer result:");
             for (int i = 0; i < results.clsids.Count(); ++i)
             {
                 int clsid = results.clsids[i];
@@ -217,11 +218,11 @@ namespace rt_detr_openvino_csharp
                 Cv2.PutText(re_image, text, new Point(bbox.TopLeft.X, bbox.TopLeft.Y-2), 
                     HersheyFonts.HersheySimplex, 0.35, new Scalar(255, 255, 255), 1);
 
-                string msg = "  class_id : " + clsid.ToString() + ", label : " + label +
-                    ", confidence : " + score_str + ", left_top : [" + bbox.TopLeft.X.ToString("0.0") 
-                    + ", " + bbox.TopLeft.X.ToString("0.0") + "], right_bottom: [" +
-                    bbox.BottomRight.X.ToString("0.0") + ", " + bbox.BottomRight.Y.ToString("0.0") + "]";
-                INFO(msg);
+                //string msg = "  class_id : " + clsid.ToString() + ", label : " + label +
+                //    ", confidence : " + score_str + ", left_top : [" + bbox.TopLeft.X.ToString("0.0000") 
+                //    + ", " + bbox.TopLeft.X.ToString("0.0000") + "], right_bottom: [" +
+                //    bbox.BottomRight.X.ToString("0.0000") + ", " + bbox.BottomRight.Y.ToString("0.0000") + "]";
+                //INFO(msg);
             }
             return re_image;
         }

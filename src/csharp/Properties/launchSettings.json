@@ -2,7 +2,7 @@
   "profiles": {
     "rt-detr_openvino_csharp": {
       "commandName": "Project",
-      "commandLineArgs": "E:\\Model\\RT-DETR\\RTDETR\\rtdetr_r50vd_6x_coco.xml E:\\GitSpace\\RT-DETR-OpenVINO\\image\\000000570688.jpg E:\\GitSpace\\RT-DETR-OpenVINO\\image\\COCO_lable.txt 1"
+      "commandLineArgs": "E:\\Model\\RT-DETR\\RTDETR\\rtdetr_r50vd_6x_coco.xml E:\\GitSpace\\RT-DETR-OpenVINO\\image\\000000014439_640x640.jpg E:\\GitSpace\\RT-DETR-OpenVINO\\image\\COCO_lable.txt 1"
     }
   }
 }

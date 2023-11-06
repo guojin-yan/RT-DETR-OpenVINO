@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>rt_detr_csharp_time_test</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenCvSharp4.Windows" Version="4.8.0.20230708" />
+    <PackageReference Include="OpenVINO.CSharp.Windows" Version="2023.1.0.2" />
+  </ItemGroup>
+</Project>
