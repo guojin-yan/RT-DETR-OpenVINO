@@ -92,7 +92,7 @@ namespace rt_detr_openvino_csharp
             ResultData results;
             if (post_flag)
             {
-                Tensor output_tensor = infer_request.get_tensor("reshape2_95.tmp_0");
+                Tensor output_tensor = infer_request.get_output_tensor(0);
                 float[] result = output_tensor.get_data<float>(300 * 6);
 
                 results = rtdetr_process.postprocess(result, null, true);

@@ -77,7 +77,7 @@ cv::Mat RTDETRPredictor::predict(cv::Mat image){
     infer_request.infer();
     ResultData results;
     if (post_flag) {
-        ov::Tensor output_tensor = infer_request.get_tensor("reshape2_95.tmp_0");
+        ov::Tensor output_tensor = infer_request.get_output_tensor(0);
         float result[6 * 300] = {0};
         for (int i = 0; i < 6 * 300; ++i) {
             result[i] = output_tensor.data<float>()[i];

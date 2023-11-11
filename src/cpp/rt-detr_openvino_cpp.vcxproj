@@ -73,7 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>C:\Program Files %28x86%29\Intel\openvino_2023.1.0\runtime\include;C:\3rdpartylib\opencv-4.5.5\build\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\Intel\openvino_2023.1.0\runtime\lib\intel64\Debug;C:\3rdpartylib\opencv-4.5.5\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>E:\GitCode\openvino_build\openvino\bin\intel64\Debug;C:\3rdpartylib\opencv-4.5.5\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)/src/cpp/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

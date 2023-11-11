@@ -20,7 +20,7 @@ void RT_DETR(std::string model_path, std::string image_path, std::string label_p
     if (post_flag) {
         std::cout << post_flag << std::endl;
         //std::string model_path = "E:\\Model\\rtdetr_r50vd_6x_coco.onnx";
-        RTDETRPredictor predictor(model_path, label_path, "CPU", true);
+        RTDETRPredictor predictor(model_path, label_path, "GPU.0", true);
         result_mat = predictor.predict(image);
     }
     else {
