@@ -80,7 +80,11 @@ If it is a model without post-processing exported from the previous text, the co
 ovc rtdetr_r50vd_6x_coco.onnx --input image[1,3,640,640]
 ```
 
-# 🎨 案例测试
+# 🗃️RT-DETR INT8 Quantization
+
+If you want to achieve RT-DETR INT8 quantization, you can refer to the steps in the following article to implement it: [**Convert and Optimize RT-DETR  real-time object detection with OpenVINO™**](./optimize/openvino-convert-and-optimize-rt-detr.ipynb)
+
+# 🎨 Case Testing
 
 ## 😇 Python
 

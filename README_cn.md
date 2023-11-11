@@ -69,7 +69,7 @@ python tools/export_model.py -c configs/rtdetr/rtdetr_r50vd_6x_coco.yml -o weigh
 paddle2onnx --model_dir=./output_inference/rtdetr_r50vd_6x_coco/ --model_filename model.pdmodel --params_filename model.pdiparams --opset_version 16 --save_file rtdetr_r50vd_6x_coco.onnx
 ```
 
-## 🎨 转换IR格式
+## 🎞️ 转换IR格式
 
 目前我们所使用的Paddle所导出来的模型为动态形状，并且OpenVINO支持动态模型输入，但是为了防止后续处理时方便，此处我们在导出IR模型时，对模型的形状进行固定，通过以下指令便可以实现：
 
@@ -82,6 +82,10 @@ ovc rtdetr_r50vd_6x_coco.onnx --input “image[1,3,640,640], im_shape[1,2], scal
 ```shell
 ovc rtdetr_r50vd_6x_coco.onnx --input image[1,3,640,640]
 ```
+
+# 🗃️RT-DETR INT8 量化
+
+如果想实现RT-DETR INT8 量化，可以参考以下文章的步骤实现：[**Convert and Optimize RT-DETR  real-time object detection with OpenVINO™**](./optimize/openvino-convert-and-optimize-rt-detr.ipynb)
 
 # 🎨 案例测试
 
