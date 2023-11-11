@@ -10,6 +10,7 @@ build/
 *.onnx
 *.xml
 *.exe
+optimize_user/
 
 # User-specific files
 *.rsuser
